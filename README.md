@@ -34,7 +34,27 @@ A Blank Document opens up into which the following source code can be typed down
 
 ## Source Code – Using Case Statement :
 
-(Include program here)
+module ALU (A,B,ALU_Sel,ALU_Out,CarryOut);
+
+     input  [3:0] A, B,
+    input  [2:0] ALU_Sel,
+    output reg [3:0] ALU_Out,
+    output reg CarryOut
+    always @(*) begin
+        case (ALU_Sel)
+            3'b000: {CarryOut, ALU_Out} = A + B;
+            3'b001: {CarryOut, ALU_Out} = A - B;
+            3'b010: ALU_Out = A & B;
+            3'b011: ALU_Out = A | B;
+            3'b100: ALU_Out = A ^ B;
+            3'b101: ALU_Out = ~A;
+            3'b110: ALU_Out = A << 1;
+            3'b111: ALU_Out = A >> 1;
+            default: ALU_Out = 4'b0000;
+        endcase
+    end
+endmodule
+
 
 Use Save option or Ctrl+S to save the code or click on the save option from the top most right corner and close the text file.
 
@@ -44,7 +64,33 @@ Similarly, create your test bench using gedit <filename_tb>.v or <filename_tb>.v
 
 ## Test Bench :
 
-(Include test bench program here)
+module ALU_tb;
+
+    reg [3:0] A, B;
+    reg [2:0] ALU_Sel;
+    wire [3:0] ALU_Out;
+    wire CarryOut;
+
+    ALU uut (
+        .A(A),
+        .B(B),
+        .ALU_Sel(ALU_Sel),
+        .ALU_Out(ALU_Out),
+        .CarryOut(CarryOut)
+    );
+
+    initial begin
+        A = 4'b0101; B = 4'b0011; ALU_Sel = 3'b000; #10;
+        A = 4'b0101; B = 4'b0011; ALU_Sel = 3'b001; #10;
+        A = 4'b1100; B = 4'b1010; ALU_Sel = 3'b010; #10;
+        A = 4'b1100; B = 4'b1010; ALU_Sel = 3'b011; #10;
+        A = 4'b1100; B = 4'b1010; ALU_Sel = 3'b100; #10;
+        A = 4'b1100; B = 4'b1010; ALU_Sel = 3'b101; #10;
+        A = 4'b0011; B = 4'b0000; ALU_Sel = 3'b110; #10;
+        A = 4'b0011; B = 4'b0000; ALU_Sel = 3'b111; #10;
+        $finish;
+    end
+endmodule
 
 Use Save option or Ctrl+S to save the code or click on the save option from the top most right corner and close the text file.
 
@@ -62,6 +108,8 @@ After this you can see the window like below
 
 ### Fig 2: Invoke the Cadence Environment
 
+
+
 To Launch Simulation tool 
 
 •linux:/> nclaunch -new& // “-new” option is used for invoking NCVERILOG for the first time for any design 
@@ -77,6 +125,9 @@ It will invoke the nclaunch window for functional simulation we can compile,elab
 
 Select Multiple Step and then select “Create cds.lib File” as shown in below figure 
 
+![Screenshot 2025-04-25 173631](https://github.com/user-attachments/assets/58c73056-9afc-4da6-816f-2a4644ee1218)
+
+
 Click the cds.lib file and save the file by clicking on Save option 
 
 ### Fig 4:cds.lib file Creation
@@ -84,6 +135,8 @@ Click the cds.lib file and save the file by clicking on Save option
 Save cds.lib file and select the correct option for cds.lib file format based on the HDL Language and Libraries used. 
 
 Select “Don’t include any libraries (verilog design)” from “New cds.lib file” and click on “OK” as in below figure .
+
+![Screenshot 2025-04-22 181212](https://github.com/user-attachments/assets/64b9babe-cdea-40d4-bb09-66fb4dc5f7df)
 
 We are simulating verilog design without using any libraries 
 
@@ -94,6 +147,8 @@ A Click “OK” in the “nclaunch: Open Design Directory” window as shown in
 ### Fig 5: Selection of Don’t include any libraries
 
 A ‘NCLaunch window’ appears as shown in figure below
+
+![Screenshot 2025-04-25 173218](https://github.com/user-attachments/assets/a00e5a0e-99a5-4827-adb2-71843af257ca)
 
 Left side you can see the HDL files. Right side of the window has worklib and snapshots directories listed. 
 
@@ -126,6 +181,8 @@ Left side select the file and in Tools : launch verilog compiler with current se
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation 
 
 ### Fig 7: Compiled database in worklib
+
+![Screenshot 2025-04-25 173200](https://github.com/user-attachments/assets/8a3e55a6-070f-489b-b385-23db68881dc9)
 
 After compilation it will come under worklib you can see in right side window
 
@@ -161,6 +218,8 @@ After elaboration the file will come under snapshot. Select the test bench and s
 
 ## Fig 8: Elaboration Launch Option
 
+![Screenshot 2025-04-25 173155](https://github.com/user-attachments/assets/201ed26a-3c77-4eb2-ac1f-fc30bea92532)
+
 ## Step 3: Simulation: 
 
 – Simulate with the given test vectors over a period of time to observe the output behaviour. 
@@ -173,11 +232,10 @@ Simulation allow to dump design and test bench signals into a waveform
 
 Steps for simulation – Run the simulation command with simulator options
 
-## Fig 9: Design Browser window for simulation
+## Fig 9:Simulation Waveform Window
 
-## Fig 10:Simulation Waveform Window
+![Screenshot 2025-04-25 173137](https://github.com/user-attachments/assets/22918987-faae-478f-9f2b-ec0ad20e7428)
 
-## Fig 11:Simulation Waveform Window
 
 ### Result
 
