@@ -108,6 +108,7 @@ After this you can see the window like below
 
 ### Fig 2: Invoke the Cadence Environment
 
+![Screenshot 2025-04-22 180754](https://github.com/user-attachments/assets/7a9b1a28-3ca7-4e91-ad35-421168a7ff39)
 
 
 To Launch Simulation tool 
@@ -157,6 +158,9 @@ Worklib is the directory where all the compiled codes are stored while Snapshot 
 To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation. 
 
 ### Fig 6: Nclaunch Window
+
+![Screenshot 2025-04-25 173218](https://github.com/user-attachments/assets/ce510288-9881-4b22-8da2-9ebe34bcd95f)
+
 
 ## Step 1: Compilation:
 
