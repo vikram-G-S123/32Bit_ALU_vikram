@@ -143,13 +143,13 @@ We are simulating verilog design without using any libraries
 
 A Click “OK” in the “nclaunch: Open Design Directory” window as shown in below figure 
 
-![image](https://github.com/user-attachments/assets/d5202b97-ee5c-4e0e-9eaf-5f3fa733e546)
 
 ### Fig 5: Selection of Don’t include any libraries
 
 A ‘NCLaunch window’ appears as shown in figure below
 
-![Screenshot 2025-04-25 173218](https://github.com/user-attachments/assets/a00e5a0e-99a5-4827-adb2-71843af257ca)
+![image](https://github.com/user-attachments/assets/d5202b97-ee5c-4e0e-9eaf-5f3fa733e546)
+
 
 Left side you can see the HDL files. Right side of the window has worklib and snapshots directories listed. 
 
